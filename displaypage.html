@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display User Info</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .details-container{
+            background-color: rgb(88, 172, 232);
+            height: 300px;
+            width: 300px;
+            border-radius: 7px;
+            border-color: rgb(16, 16, 231);
+            margin-left: 40%;
+            padding-top: 20px;
+            padding-left: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="details-container">
+    <h2>Submitted Details</h2>
+    <p id="userInfo"></p>
+</div>
+    <script>
+        // Retrieve the data from local storage
+        const username = localStorage.getItem("username");
+        const password = localStorage.getItem("password");
+
+        // Display the data if it exists
+        if (username && password) {
+            document.getElementById("userInfo").innerHTML = `
+                <strong >Username:</strong> ${username} <br>
+                <strong>Password:</strong> ${password}
+            `;
+        } else {
+            document.getElementById("userInfo").textContent = "No details available.";
+        }
+
+        // Clear the local storage after displaying the data
+        localStorage.removeItem("username");
+        localStorage.removeItem("password");
+    </script>
+</body>
+</html>
+
